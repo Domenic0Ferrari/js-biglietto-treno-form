@@ -59,7 +59,7 @@ btnGenera.addEventListener("click" , function(){
         } else if (userAge > 65){
         document.getElementById("price").innerHTML = scontoQuaranta;
         } else{
-        document.getElementById("price").innerHTML = calcolaPrezzoTotale;
+        document.getElementById("price").innerHTML = basePrice;
         }
 })
 
