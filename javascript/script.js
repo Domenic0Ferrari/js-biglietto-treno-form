@@ -40,7 +40,28 @@ btnGenera.addEventListener("click" , function(){
         console.log("Km da percorrere:", distanza);
 
         let età = document.getElementById("age").value;
-        console.log("Età:", età);})
+        console.log("Età:", età);
+    
+        let priceKm = 0.21;
+        let basePrice = (distanza * priceKm).toFixed(2);
+        console.log(basePrice);
+
+        const scontoVenti = (basePrice - (basePrice / 100 * 20)).toFixed(2);
+
+        console.log(scontoVenti);
+
+        const scontoQuaranta = (basePrice - (basePrice / 100 * 40)).toFixed(2);
+
+        console.log(scontoQuaranta);
+
+        if (età < 18){
+        document.getElementById("price").innerHTML = scontoVenti;
+        } else if (userAge > 65){
+        document.getElementById("price").innerHTML = scontoQuaranta;
+        } else{
+        document.getElementById("price").innerHTML = calcolaPrezzoTotale;
+        }
+})
 
 // let distanza = document.getElementById('distance');
 // let età = document.getElementById('age');
