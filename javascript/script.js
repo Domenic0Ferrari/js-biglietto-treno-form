@@ -35,6 +35,10 @@ formattare finalPrice a due cifre decimali con .toFixed(2)
 const btnGenera = document.getElementById("genera");
 
 btnGenera.addEventListener("click" , function(){
+        
+        // Variabili
+        let nome = document.getElementById("name").value;
+        console.log("Il tuo nome è:" , nome);
 
         let distanza = document.getElementById("distance").value;
         console.log("Km da percorrere:", distanza);
@@ -42,43 +46,51 @@ btnGenera.addEventListener("click" , function(){
         let età = document.getElementById("age").value;
         console.log("Età:", età);
     
-        let priceKm = 0.21;
-        let basePrice = (distanza * priceKm).toFixed(2);
-        console.log(basePrice);
+        //calcolo prezzo
+        let prezzo = (distanza * 0.21);
+        let sconto;
+        let tipoOfferta;
 
-        const scontoVenti = (basePrice - (basePrice / 100 * 20)).toFixed(2);
+        // calcolo sconto per età
+        if (età == "minorenne") {
+                sconto = ((prezzo * 20) / 100); 
+                tipoOfferta = "Offerta Minorenni";
+            } else if (età =="over65") {
+                sconto = ((prezzo * 40) / 100);
+                tipoOfferta = "Offerta Over 65";
+            } else {
+                sconto = 0;
+                tipoOfferta = "Nessuna offerta";
+            }
 
-        console.log(scontoVenti);
+        let prezzoFinale=(prezzo - sconto).toFixed(2);
 
-        const scontoQuaranta = (basePrice - (basePrice / 100 * 40)).toFixed(2);
-
-        console.log(scontoQuaranta);
-
-        if (età < 18){
-        document.getElementById("price").innerHTML = scontoVenti;
-        } else if (userAge > 65){
-        document.getElementById("price").innerHTML = scontoQuaranta;
-        } else{
-        document.getElementById("price").innerHTML = basePrice;
+        //carrozza
+        let carrozza = Math.floor(Math.random() * 10) + 1;
+        //codice cp
+        function randomNumber(min, max) {
+                return Math.floor(Math.random() * (max - min) ) + min;
         }
+        let codice = randomNumber(90000, 100000)
+            
+        //generazione dati sulla pagina
+        document.getElementById("dato_nome_utente").innerHTML = nome;
+        document.getElementById("carrozza").innerHTML = carrozza;
+        document.getElementById("codice").innerHTML = codice;
+        document.getElementById("costo").innerHTML = prezzoFinale + "€";
 })
 
-// let distanza = document.getElementById('distance');
-// let età = document.getElementById('age');
-
-// let priceKm = 0.21;
-// let basePrice = (distanza * priceKm);
-
-// let discountChildren = 20;
-// let discountSenior = 40;
-// let discountPercent = 0;
-
-// if (età < 18) {
-// 	discountPercent = discountChildren;
-// } else if (age > 65) {
-// 	discountPercent = discountSenior;
-// }
-
-// let discount = basePrice * discountPercent / 100;
-// let finalPrice = basePrice - discount;
-// console.log(finalPrice);
+ //click su annulla
+ let btnAnnulla = document.getElementById("annulla");
+ btnAnnulla.addEventListener("click" , function(){
+     //dati biglietto
+//      document.getElementById("carrozza").innerHTML = "";
+//      document.getElementById("codice").innerHTML = "";
+//      document.getElementById("dato_nome_utente").innerHTML = "";
+//      document.getElementById("offerta").innerHTML = "";
+//      document.getElementById("costo").innerHTML = "";
+     //dati utente
+     document.getElementById("name").value = "";
+     document.getElementById("distance").value = "";
+     document.getElementById("age").value = "";
+ })

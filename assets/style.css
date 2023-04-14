@@ -2,3 +2,7 @@ body{
     padding-top: 3rem;
     background-color: #B91450;
 }
+
+.container{
+    border-radius: 15px;
+}
