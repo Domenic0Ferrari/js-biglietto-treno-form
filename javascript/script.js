@@ -84,11 +84,10 @@ btnGenera.addEventListener("click" , function(){
  let btnAnnulla = document.getElementById("annulla");
  btnAnnulla.addEventListener("click" , function(){
      //dati biglietto
-//      document.getElementById("carrozza").innerHTML = "";
-//      document.getElementById("codice").innerHTML = "";
-//      document.getElementById("dato_nome_utente").innerHTML = "";
-//      document.getElementById("offerta").innerHTML = "";
-//      document.getElementById("costo").innerHTML = "";
+     document.getElementById("carrozza").innerHTML = "";
+     document.getElementById("codice").innerHTML = "";
+     document.getElementById("dato_nome_utente").innerHTML = "";
+     document.getElementById("costo").innerHTML = "";
      //dati utente
      document.getElementById("name").value = "";
      document.getElementById("distance").value = "";
